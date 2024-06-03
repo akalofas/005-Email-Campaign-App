@@ -39,4 +39,6 @@ const login = async (userData) => {
 	}
 };
 
-export default { login };
+const loginService = { login };
+
+export default loginService;

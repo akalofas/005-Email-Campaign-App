@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCampaigns } from '../features/campaign/campaignActions/fetchCampaigns';
+import { deleteCampaign } from '../features/campaign/campaignActions/deleteCampaign';
+import { duplicateCampaign } from '../features/campaign/campaignActions/duplicateCampaign';
 import CampaignList from '../components/CampaignList';
 
 const CampaignListContainer = () => {

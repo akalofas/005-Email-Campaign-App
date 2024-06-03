@@ -5,11 +5,12 @@ const API_URL =
 		? `${process.env.SERVER_URL}/api/templates/`
 		: `${process.env.SERVER_URL}:${process.env.SERVER_PORT}/api/templates/`;
 
-const fetchTemplates = async (token) => {
+const createTemplate = async (templateData, token) => {
 	try {
-		const response = await axios.get(API_URL, {
+		const response = await axios.post(API_URL, templateData, {
 			headers: {
 				Authorization: `Bearer ${token}`,
+				'Content-Type': 'application/json',
 			},
 			timeout: 5000,
 		});
@@ -22,7 +23,7 @@ const fetchTemplates = async (token) => {
 
 		return response.data;
 	} catch (error) {
-		console.error('Error fetching templates:', error);
+		console.error('Error creating template:', error);
 
 		if (error.response) {
 			throw new Error(
@@ -38,4 +39,6 @@ const fetchTemplates = async (token) => {
 	}
 };
 
-export default { fetchTemplates };
+const createTemplateService = { createTemplate };
+
+export default createTemplateService;

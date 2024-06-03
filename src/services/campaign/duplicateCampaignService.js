@@ -5,7 +5,7 @@ const API_URL =
 		? `${process.env.SERVER_URL}/api/campaigns/`
 		: `${process.env.SERVER_URL}:${process.env.SERVER_PORT}/api/campaigns/`;
 
-const duplicateCampaignService = async (id, token) => {
+const duplicateCampaign = async (id, token) => {
 	try {
 		const response = await axios.post(
 			`${API_URL}duplicate`,
@@ -43,4 +43,6 @@ const duplicateCampaignService = async (id, token) => {
 	}
 };
 
-export default { duplicateCampaignService };
+const duplicateCampaignService = { duplicateCampaign };
+
+export default duplicateCampaignService;

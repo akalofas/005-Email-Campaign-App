@@ -1,6 +1,6 @@
 const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
-const sendEmail = require('../utils/emailSender');
+const sendEmail = require('../../utils/emailSender');
 
 exports.register = async (req, res) => {
 	const { email, password } = req.body;

@@ -5,7 +5,7 @@ const API_URL =
 		? `${process.env.SERVER_URL}/api/contacts/`
 		: `${process.env.SERVER_URL}:${process.env.SERVER_PORT}/api/contacts/`;
 
-const updateContactService = async (id, contactData, token) => {
+const updateContact = async (id, contactData, token) => {
 	try {
 		const response = await axios.put(`${API_URL}${id}`, contactData, {
 			headers: {
@@ -39,4 +39,6 @@ const updateContactService = async (id, contactData, token) => {
 	}
 };
 
-export default { updateContactService };
+const updateContactService = { updateContact };
+
+export default updateContactService;

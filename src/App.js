@@ -6,10 +6,12 @@ import DashboardContainer from './containers/DashboardContainer';
 import CreateCampaignModalContainer from './containers/CreateCampaignModalContainer';
 import CampaignListContainer from './containers/CampaignListContainer';
 import CampaignStatisticsContainer from './containers/CampaignStatisticsContainer';
+import Home from './pages/Home';
 
 const App = () => (
 	<Router>
 		<Routes>
+			<Route path='/' element={<Home />} />
 			<Route
 				path='/register'
 				element={<RegisterFormContainer />}

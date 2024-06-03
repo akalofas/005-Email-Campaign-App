@@ -5,7 +5,7 @@ const API_URL =
 		? `${process.env.SERVER_URL}/api/users/`
 		: `${process.env.SERVER_URL}:${process.env.SERVER_PORT}/api/users/`;
 
-const verifyEmailService = async (token) => {
+const verifyEmail= async (token) => {
 	try {
 		const response = await axios.get(
 			`${API_URL}verify-email?token=${token}`,
@@ -38,4 +38,7 @@ const verifyEmailService = async (token) => {
 	}
 };
 
-export default { verifyEmailService };
+
+const verifyEmailService = { verifyEmail };
+
+export default verifyEmailService;

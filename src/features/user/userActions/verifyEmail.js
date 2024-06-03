@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { verifyEmailService } from '../../../services/users/verifyEmailService';
+import verifyEmailService from '../../../services/users/verifyEmailService';
 
 export const verifyEmail = createAsyncThunk(
 	'user/verifyEmail',

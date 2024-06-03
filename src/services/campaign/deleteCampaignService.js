@@ -5,7 +5,7 @@ const API_URL =
 		? `${process.env.SERVER_URL}/api/campaigns/`
 		: `${process.env.SERVER_URL}:${process.env.SERVER_PORT}/api/campaigns/`;
 
-const deleteCampaignService = async (id, token) => {
+const deleteCampaign = async (id, token) => {
 	try {
 		const response = await axios.delete(`${API_URL}${id}`, {
 			headers: {
@@ -38,4 +38,6 @@ const deleteCampaignService = async (id, token) => {
 	}
 };
 
-export default { deleteCampaignService };
+const deleteCampaignService = { deleteCampaign };
+
+export default deleteCampaignService;

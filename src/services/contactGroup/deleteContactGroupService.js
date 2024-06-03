@@ -5,7 +5,7 @@ const API_URL =
 		? `${process.env.SERVER_URL}/api/contact-groups/`
 		: `${process.env.SERVER_URL}:${process.env.SERVER_PORT}/api/contact-groups/`;
 
-const deleteContactGroupService = async (id, token) => {
+const deleteContactGroup = async (id, token) => {
 	try {
 		const response = await axios.delete(`${API_URL}${id}`, {
 			headers: {
@@ -38,4 +38,6 @@ const deleteContactGroupService = async (id, token) => {
 	}
 };
 
-export default { deleteContactGroupService };
+const deleteContactGroupService = { deleteContactGroup };
+
+export default deleteContactGroupService;

@@ -5,7 +5,7 @@ const API_URL =
 		? `${process.env.SERVER_URL}/api/contact-groups/`
 		: `${process.env.SERVER_URL}:${process.env.SERVER_PORT}/api/contact-groups/`;
 
-const createContactGroupService = async (groupData, token) => {
+const createContactGroup = async (groupData, token) => {
 	try {
 		const response = await axios.post(API_URL, groupData, {
 			headers: {
@@ -39,4 +39,6 @@ const createContactGroupService = async (groupData, token) => {
 	}
 };
 
-export default { createContactGroupService };
+const createContactGroupService = { createContactGroup };
+
+export default createContactGroupService;

@@ -1,6 +1,7 @@
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config();
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
@@ -8,7 +9,7 @@ const dbConnect = require('./utils/dbConnect');
 const routes = require('./routes');
 
 const app = express();
-dbConnect();
+dbConnect().catch(console.dir);
 
 app.use(cors({ credentials: true, origin: `${process.env.FRONT_URL}:${process.env.FRONT_URL}` }));
 app.use(express.json());
@@ -23,4 +24,6 @@ const sslServer = https.createServer(
 	app
 );
 
-sslServer.listen(443, () => console.log('Secure server on https 443'));
+const PORT = process.env.SERVER_PORT || 443;
+
+sslServer.listen(PORT, () => console.log(`Secure server on https ${PORT}`));

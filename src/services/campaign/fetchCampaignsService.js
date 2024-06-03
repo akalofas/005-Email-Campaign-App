@@ -5,7 +5,7 @@ const API_URL =
 		? `${process.env.SERVER_URL}/api/campaigns/`
 		: `${process.env.SERVER_URL}:${process.env.SERVER_PORT}/api/campaigns/`;
 
-const fetchCampaignsService = async (token) => {
+const fetchCampaigns = async (token) => {
 	try {
 		const response = await axios.get(API_URL, {
 			headers: {
@@ -38,4 +38,6 @@ const fetchCampaignsService = async (token) => {
 	}
 };
 
-export default { fetchCampaignsService };
+const fetchCampaignsService = { fetchCampaigns };
+
+export default fetchCampaignsService;

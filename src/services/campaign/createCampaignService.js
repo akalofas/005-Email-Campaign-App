@@ -5,7 +5,7 @@ const API_URL =
 		? `${process.env.SERVER_URL}/api/campaigns/`
 		: `${process.env.SERVER_URL}:${process.env.SERVER_PORT}/api/campaigns/`;
 
-const createCampaignService = async (campaignData, token) => {
+const createCampaign = async (campaignData, token) => {
 	try {
 		const response = await axios.post(API_URL, campaignData, {
 			headers: {
@@ -39,4 +39,6 @@ const createCampaignService = async (campaignData, token) => {
 	}
 };
 
-export default { createCampaignService };
+const createCampaignService = { createCampaign };
+
+export default createCampaignService;

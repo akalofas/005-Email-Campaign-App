@@ -5,7 +5,7 @@ const API_URL =
 		? `${process.env.SERVER_URL}/api/contact-groups/`
 		: `${process.env.SERVER_URL}:${process.env.SERVER_PORT}/api/contact-groups/`;
 
-const fetchContactGroupsService = async (token) => {
+const fetchContactGroups = async (token) => {
 	try {
 		const response = await axios.get(API_URL, {
 			headers: {
@@ -38,4 +38,6 @@ const fetchContactGroupsService = async (token) => {
 	}
 };
 
-export default { fetchContactGroupsService };
+const fetchContactGroupsService = { fetchContactGroups };
+
+export default fetchContactGroupsService;

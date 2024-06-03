@@ -39,4 +39,6 @@ const register = async (userData) => {
 	}
 };
 
-export default { register };
+const registerService = { register };
+
+export default registerService;
