@@ -4,30 +4,37 @@ Create a `.env` file at the root of your project with the following content:
 
 ```plaintext
 # Server Configuration
-SERVER_URL = "http://localhost"
-SERVER_PORT = 5000
+SERVER_URL=http://localhost
+SERVER_PORT=5443
 
 # Client Configuration
-FRONT_URL = "https://localhost"
-FRONT_PORT = 3000
+FRONT_URL=https://localhost
+FRONT_PORT=3000
 
 # SSL Key and Certificate
 SSL_PRIVATE_KEY_PATH=./key.pem
 SSL_CERTIFICATE_PATH=./cert.pem
 
 # MongoDB
-mongoDB_username="username"
-mongoDB_password="password"
-mongoDB_URI_FIRST_PART="mongodb+srv://"
-mongoDB_DB="database_name"
-mongoDB_OPTIONS01="mongodb_cluster_name"
-mongoDB_OPTIONS02="mongodb_cluster_options"
+mongoDB_username=db_user
+mongoDB_password=db_password
+mongoDB_URI_FIRST_PART=mongodb+srv://
+mongoDB_DB=db_name
+mongoDB_CLUSTER=@your_cluster/
+mongoDB_OPTIONS01=?retryWrites=true&w=majority&appName=Cluster0
 
 # Email configuration (for nodemailer)
 SMTP_HOST=smtp.example.com
 SMTP_HOST_PORT=587
 EMAIL_USERNAME=test@example.com
 EMAIL_PASSWORD=email_password
+
+# JWT Configuration
+JWT_SECRET=your_jwt_secret
+
+# Node Environment
+NODE_ENV=development
+word
 
 # JWT Configuration
 JWT_SECRET=your_jwt_secret
