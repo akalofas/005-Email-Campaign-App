@@ -1,0 +1,17 @@
+.templateList {
+  display: flex;
+  flex-direction: column;
+}
+
+.template {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 5px 0;
+}
+
+.template.selected {
+  background-color: #007bff;
+  color: white;
+}

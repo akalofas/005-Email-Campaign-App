@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import RegisterFormContainer from './containers/RegisterFormContainer';
+import LoginFormContainer from './containers/LoginFormContainer';
+import DashboardContainer from './containers/DashboardContainer';
+import CreateCampaignModalContainer from './containers/CreateCampaignModalContainer';
+import CampaignListContainer from './containers/CampaignListContainer';
+import CampaignStatisticsContainer from './containers/CampaignStatisticsContainer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+	<Router>
+		<Routes>
+			<Route
+				path='/register'
+				element={<RegisterFormContainer />}
+			/>
+			<Route
+				path='/login'
+				element={<LoginFormContainer />}
+			/>
+			<Route
+				path='/dashboard'
+				element={<DashboardContainer />}
+			/>
+			<Route
+				path='/create-campaign'
+				element={<CreateCampaignModalContainer />}
+			/>
+			<Route
+				path='/campaigns'
+				element={<CampaignListContainer />}
+			/>
+			<Route
+				path='/campaigns/:campaignId/statistics'
+				element={<CampaignStatisticsContainer />}
+			/>
+		</Routes>
+	</Router>
+);
 
 export default App;
