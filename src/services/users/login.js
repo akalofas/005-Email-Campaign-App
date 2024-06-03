@@ -6,10 +6,37 @@ const API_URL =
 		: `${process.env.SERVER_URL}:${process.env.SERVER_PORT}/api/users/`;
 
 const login = async (userData) => {
-	const response = await axios.post(`${API_URL}login`, userData, {
-		withCredentials: true,
-	});
-	return response.data;
+	try {
+		const response = await axios.post(`${API_URL}login`, userData, {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			withCredentials: true,
+			timeout: 5000,
+		});
+
+		if (response.status < 200 || response.status >= 300) {
+			throw new Error(
+				`Server responded with status code ${response.status}`
+			);
+		}
+
+		return response.data;
+	} catch (error) {
+		console.error('Error logging in:', error);
+
+		if (error.response) {
+			throw new Error(
+				`Error: ${
+					error.response.data.message || error.response.statusText
+				}`
+			);
+		} else if (error.request) {
+			throw new Error('No response received from the server.');
+		} else {
+			throw new Error(`Request error: ${error.message}`);
+		}
+	}
 };
 
 export default { login };

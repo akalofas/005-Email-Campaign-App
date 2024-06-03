@@ -6,8 +6,39 @@ const API_URL =
 		: `${process.env.SERVER_URL}:${process.env.SERVER_PORT}/api/users/`;
 
 const logout = async () => {
-	await axios.post(`${API_URL}logout`, {}, { withCredentials: true });
-	localStorage.removeItem('user');
+	try {
+		const response = await axios.post(
+			`${API_URL}logout`,
+			{},
+			{
+				withCredentials: true,
+				timeout: 5000,
+			}
+		);
+
+		if (response.status < 200 || response.status >= 300) {
+			throw new Error(
+				`Server responded with status code ${response.status}`
+			);
+		}
+
+		localStorage.removeItem('user');
+		return response.data;
+	} catch (error) {
+		console.error('Error logging out:', error);
+
+		if (error.response) {
+			throw new Error(
+				`Error: ${
+					error.response.data.message || error.response.statusText
+				}`
+			);
+		} else if (error.request) {
+			throw new Error('No response received from the server.');
+		} else {
+			throw new Error(`Request error: ${error.message}`);
+		}
+	}
 };
 
 export default { logout };
